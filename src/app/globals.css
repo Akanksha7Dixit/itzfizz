@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a08;
+  --fg: #f0ede6;
+  --accent: #c8f03c;
+  --muted: #4a4a42;
+  --border: rgba(240, 237, 230, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Neue Montreal', 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 2px; }
+
+/* Headline letter spacing */
+.hero-headline {
+  font-family: 'Bebas Neue', 'Anton', sans-serif;
+  letter-spacing: 0.3em;
+  line-height: 0.9;
+}
+
+/* Grain overlay */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+  animation: grain 0.5s steps(2) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-3%, 3%); }
+  50% { transform: translate(3%, -3%); }
+  75% { transform: translate(-3%, -3%); }
+}
+
+/* Stat counter */
+.stat-number {
+  font-family: 'Bebas Neue', 'Anton', sans-serif;
+  line-height: 1;
+}
+
+/* Metric card */
+.metric-card {
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+/* Floating orb */
+.orb {
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Image reveal clip */
+.image-reveal {
+  clip-path: inset(0 100% 0 0);
+}
+
+/* Horizontal marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 20s linear infinite;
+}
+
+/* Nav link hover */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* CTA Button */
+.cta-btn {
+  position: relative;
+  overflow: hidden;
+}
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.cta-btn:hover::before {
+  transform: translateX(0);
+}
+.cta-btn:hover span {
+  color: var(--bg);
+}
+.cta-btn span {
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
