@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+
 const SERVICES = [
   { num: '01', title: 'Brand Identity', desc: 'Distinctive visual systems that communicate your core at every touchpoint.' },
   { num: '02', title: 'Web Experience', desc: 'Performant, animated digital spaces built for conversion and delight.' },
@@ -15,6 +16,7 @@ const SERVICES = [
 
 export default function BelowFold() {
   const sectionRef = useRef(null)
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -35,7 +37,6 @@ export default function BelowFold() {
           },
         }
       )
-
       // Big text reveal
       gsap.fromTo(
         '.big-text',
