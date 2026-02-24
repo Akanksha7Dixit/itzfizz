@@ -2,7 +2,7 @@
 
 A premium hero section animation built with Next.js, Tailwind CSS, and GSAP ScrollTrigger.
 
-## ✦ Features
+##  Features
 
 - **Staggered letter-by-letter headline** reveal on load (perspective + Y transform)
 - **Animated statistics** with count-up effect and staggered entrance
