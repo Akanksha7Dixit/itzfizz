@@ -675,8 +675,9 @@ export default function HeroSection() {
             writingMode: 'vertical-rl',
           }}
         >
-          Scroll
+             Scroll
         </div>
+
         <div
           style={{
             width: '1px',
@@ -685,6 +686,7 @@ export default function HeroSection() {
             overflow: 'hidden',
             position: 'relative',
           }}
+
         >
           <div
             style={{
